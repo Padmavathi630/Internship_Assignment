@@ -16,8 +16,8 @@ df.dropna()
 st.dataframe(df)
 
 
-page = st.sidebar.selectbox(':red[Select page]',['Cases data','recovery data data'])
-if page == 'Cases data':
+page = st.sidebar.selectbox(':red[Select page]',['Total Cses and Total Deaths in each country','Recovered and active cases in each country'])
+if page == 'Total Cses and Total Deaths in each country':
   clist = df['Country'].unique()
   country = st.selectbox(":red[Select a country]",clist)
   col1, col2 = st.columns(2)
@@ -34,7 +34,8 @@ else:
 
   country = df['Country'].unique()
  
-  recovery_data = st.selectbox("Select a Country:",country)
+  st.markdown(":red[_**Total recovered and active cases in each country **_]")
+
   col1,col2 = st.columns(2)
   fig = px.line(df[df['Country'] == country], 
     x = "Country", y = "Total Recovered",
